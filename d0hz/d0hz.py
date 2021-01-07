@@ -1,3 +1,5 @@
+# imports
+import graphviz
 # create class
 class D0HZ(object):
   #
