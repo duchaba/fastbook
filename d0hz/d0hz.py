@@ -56,4 +56,62 @@ class D0HZ(object):
     self._ph()
     self._pp("bye'aaa", "bye'aaa")
     return
+  #
+  #
+  # draw graph using graphvix.org
+  #@add_method(D0HZ)
+  def _draw_graph_viz(self,graph,label,direction="LR",arrow_head="normal",bgcolor="#dee2e6",
+    edge_color="#6c757d",default_shape="oval",font_color="#343a40", is_filled=True,
+    fill_color="#ced4da",label_color="#17a2b8",graph_size="",node_font_size=14.0):
+    #
+    # set up
+    fill = ''
+    if (is_filled):
+      fill = ' style=filled color="#343a40" fillcolor="' + fill_color + '" '
+    gsize =''
+    if (graph_size != ""):
+      gsize = ' size="' + str(graph_size) + '" '
+    x = 'digraph G{'
+    x += 'label="' + label + '" '
+    x += 'rankdir="' + direction + '" '
+    #
+    x += 'node [ fontname="Arial" '
+    x += fill
+    x += 'shape=' + default_shape + ' '
+    x += 'fontcolor="' + font_color + '" '
+    x += 'fontsize=' + str(node_font_size) + ' '
+    x += ' ] '
+    #
+    x += 'graph [pad=0.4 fontsize=20 fontcolor="' + label_color + '" ' + gsize
+    x += 'bgcolor="' + bgcolor + '" '
+    x += ' ] '
+    #
+    x += 'edge ['
+    x += 'arrowhead=' + arrow_head + ' '
+    x += 'color="' + edge_color + '" '
+    x += ' ] '
+    #
+    x += graph
+    x += ' }'
+    display(graphviz.Source(x))
+    return
+  #
+  #
+  # draw it using fastbook.gv()
+  #@add_method(D0HZ)
+  def draw_deep_learning_scope(self):
+    x = 'Deep_Learning[shape=circle style=filled fillcolor="' + self.color_pink + '" ] '
+    x += 'Vision->Deep_Learning[label="classify & detect\n(Classification)", fontsize=8.0]; '
+    x += '"Text (NLP)"->Deep_Learning[label="classify &\nconverse (weak)\n(Classification)", fontsize=8.0]; '
+    x += 'Tabular->Deep_Learning[label="predict\ncardinality data\n(Classification & Regression)", fontsize=8.0]; '
+    x += '"Collaborative Filtering\n(Recomendation Sys.)"->Deep_Learning[label="predict &\nrecomend\n(Regression)", fontsize=8.0]; '
+    x += 'Deep_Learning->Medicine; '
+    x += 'Deep_Learning->Biology; '
+    x += 'Deep_Learning->Game_AI; '
+    x += 'Deep_Learning->Robotics; '
+    x += 'Deep_Learning->"Many Others"; '
+    #
+    self._draw_graph_viz(x,"Deep Learning Scope",default_shape="component",arrow_head="dot")
+    return
+
 # ---end of D0HZ class
