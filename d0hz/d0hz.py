@@ -137,13 +137,25 @@ class D0HZ(object):
   # draw journey
   # @add_method(D0HZ)
   def draw_journey(self):
-    x = '"A Rock\n(Start)"[shape=house style=filled fillcolor="' + self.color_yellow + '" ] '
-    x += '"A Lake"[shape=box style=filled fillcolor="' + self.color_teal + '" ] '
+    x = '"The Rock\n(Start)\nFirst Chapter"[shape=oval style=filled fillcolor="' + self.color_yellow + '" ]; '
+    # x += '"The Lake\nNext Journey"[shape=oval style=filled fillcolor="' + self.color_teal + '" ]; '
+    x += 'Rocky[shape=circle style=filled fontsize=16.0 fillcolor="' + self.color_pink + '" ]; '
     #
-    x += '"A Rock\n(Start)"->Rocky[label="Learn intro.\nconcept, coding" fontsize=10.0];'
-    x += 'Rocky->"A Lake"[label="Make it\nhis journey" fontsize=10.0];'
+    x += '"The Rock\n(Start)\nFirst Chapter"->Rocky[label="begin the\njourney" fontsize=9.0]; '
+    x += 'Rocky->"Brief AI\nHistory"[label=".draw_brief_history()" fontsize=9.0]; '
+    # x += '"Brief AI\nHistory"->"The Lake\nNext Journey"[style="dashed" arrowhead="dot"]; '
+    x += 'Rocky->"Fast.ai Team"[label=".draw_fastai_team()" fontsize=9.0]; '
+    x += 'Rocky->"Deep Learning\nProcess"[label=".draw_learning_process()" fontsize=9.0]; '
+    x += 'Rocky->"Fast.ai\nDev Stack"[label=".draw_dev_stack()" fontsize=9.0]; '
+    x += 'Rocky->"Image Classification\n(Cat or Dog)"[label=".dance_two_steps_img_id()" fontsize=9.0]; '
+    x += 'Rocky->"Predict\n(Inference)"[label=".say_pet_is()" fontsize=9.0]; '
+    x += 'Rocky->"Machine Learning\nNeural Network"[label=".draw_ann()" fontsize=9.0]; '
+    x += 'Rocky->"Image Segmentation\n(Camvid)"[label=".dance_dosido_img_segm()" fontsize=9.0]; '
+    x += 'Rocky->"Text NLP\n(IMDB Review Sentiment)"[label=".dance_monster_mash_nlp()" fontsize=9.0]; '
+    x += 'Rocky->"Tabular\n(Adult Salary)"[label=".dance_twosteps_tabular()" fontsize=9.0]; '
+    x += 'Rocky->"Recomendation\nCollab. Filtering\n(Movie Rating)"[label=".dance_hula_colab()" fontsize=9.0]; '
     #
-    self._draw_graph_viz(x,"The Journey",default_shape="circle",fill_color=self.color_pink)
+    self._draw_graph_viz(x,"Rocky's Journey",default_shape="component",node_font_size=12.0)
     return
   #
   #
